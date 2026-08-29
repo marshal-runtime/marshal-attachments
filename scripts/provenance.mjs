@@ -62,23 +62,23 @@ export const expectedSourceProvenance = {
   consolidation: {
     canonicalOwner: "@marshal/attachments",
     currentPackageTrees: {
-      "packages/attachments": "38e87c32205808feb008a416f2d3e9ef02937397",
-      "packages/agent-runtime-provider-attachments": "9da398f2716274053262622a70a10ae0814e9d5b",
-      "packages/content-to-markdown": "a760d4f02c9774847215455833192831eef33ae8",
+      "packages/attachments": "d195474ad108274ab9dac6aca9d0fe1765aa9d03",
+      "packages/agent-runtime-provider-attachments": "8b8a70b6d6abe57b25df03cfcc76b6beda9e1d32",
+      "packages/content-to-markdown": "85fe1430ac05c6af19ea717d81e371ca0526282d",
     },
     implementationModules: {
       provider: {
         sourcePackage: "packages/agent-runtime-provider-attachments",
-        sourceTree: "da124ed62e08f2024c382b6fba6b47ef9315e353",
+        sourceTree: "fdba63edbfc74f6325f3fa2a426d23c9cedd9ef0",
         target: "packages/agent-runtime-provider-attachments/src",
-        currentTree: "da124ed62e08f2024c382b6fba6b47ef9315e353",
+        currentTree: "fdba63edbfc74f6325f3fa2a426d23c9cedd9ef0",
         transforms: [],
       },
       contentToMarkdown: {
         sourcePackage: "packages/content-to-markdown",
-        sourceTree: "fb514e354ac5429f28557f94137e6f7df65c8bf2",
+        sourceTree: "fbf22013f73bff630230994af9f46f500003e886",
         target: "packages/content-to-markdown/src",
-        currentTree: "fb514e354ac5429f28557f94137e6f7df65c8bf2",
+        currentTree: "fbf22013f73bff630230994af9f46f500003e886",
         transforms: [],
       },
     },
@@ -182,11 +182,12 @@ async function hashPackageTrees(packageRoot, transforms, failures) {
       if (entry.isDirectory()) {
         mode = "40000";
         const child = await walk(absolutePath, relativePath);
+        if (child.entryCount === 0) continue;
         extractedObject = child.currentTree;
         sourceObject = child.sourceTree;
       } else if (entry.isFile()) {
         mode = "100644";
-        const bytes = await readFile(absolutePath);
+        const bytes = normalizeGitText(await readFile(absolutePath));
         extractedObject = gitObjectId("blob", bytes);
         const transform = transformsByPath.get(relativePath);
         if (transform) {
@@ -212,6 +213,7 @@ async function hashPackageTrees(packageRoot, transforms, failures) {
     return {
       currentTree: gitObjectId("tree", Buffer.concat(currentEntries)),
       sourceTree: gitObjectId("tree", Buffer.concat(sourceEntries)),
+      entryCount: currentEntries.length,
     };
   }
 
@@ -236,6 +238,11 @@ function gitObjectId(type, content) {
     .update(`${type} ${content.length}\0`, "utf8")
     .update(content)
     .digest("hex");
+}
+
+function normalizeGitText(bytes) {
+  const text = bytes.toString("utf8");
+  return Buffer.from(text.replaceAll("\r\n", "\n"), "utf8");
 }
 
 function sameJson(left, right) {
