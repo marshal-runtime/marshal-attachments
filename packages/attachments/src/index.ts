@@ -2,11 +2,11 @@ import { join } from 'node:path';
 import {
   createAttachmentProvider,
   type AttachmentProviderOptions,
-} from './provider/index.js';
+} from '@marshal/agent-runtime-provider-attachments';
 import type { RuntimeHostProviderSource } from '@marshal/runtime';
 
-export * from './provider/index.js';
-export * from './content-to-markdown/index.js';
+export * from '@marshal/agent-runtime-provider-attachments';
+export * from '@marshal/content-to-markdown';
 export * from './packageDeclaration.js';
 
 export interface AttachmentsSourceOptions extends Omit<

@@ -1,1 +1,2 @@
-export * from '@marshal/attachments/provider';
+export * from './attachments.js';
+export * from './attachments.js';

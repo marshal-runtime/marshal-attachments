@@ -10,6 +10,6 @@
   },
   "include": [
     "src/extension.ts",
-    "packages/attachments/src/content-to-markdown/*.d.ts"
+    "packages/content-to-markdown/src/*.d.ts"
   ]
 }

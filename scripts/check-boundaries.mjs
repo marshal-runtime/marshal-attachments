@@ -7,13 +7,14 @@ const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url))
 const packagesRoot = path.join(repositoryRoot, "packages");
 const failures = [];
 const allowedInternalEdges = new Map([
-  ["@marshal/attachments", new Set()],
+  ["@marshal/attachments", new Set([
+    "@marshal/agent-runtime-provider-attachments",
+    "@marshal/content-to-markdown",
+  ])],
   ["@marshal/agent-runtime-provider-attachments", new Set([
-    "@marshal/attachments",
+    "@marshal/content-to-markdown",
   ])],
-  ["@marshal/content-to-markdown", new Set([
-    "@marshal/attachments",
-  ])],
+  ["@marshal/content-to-markdown", new Set()],
 ]);
 const packageDirectories = (await readdir(packagesRoot, { withFileTypes: true }))
   .filter((entry) => entry.isDirectory())

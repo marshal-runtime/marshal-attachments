@@ -96,19 +96,23 @@ test("records the exact pre-consolidation public surfaces", async () => {
   });
 });
 
-test("reverses internal dependencies without a package cycle", async () => {
+test("keeps package dependencies directed toward owned implementations", async () => {
   const attachments = await packageManifest("attachments");
   const provider = await packageManifest("agent-runtime-provider-attachments");
   const content = await packageManifest("content-to-markdown");
 
   assert.deepEqual(provider.dependencies, {
-    "@marshal/attachments": "workspace:*",
+    "@marshal/agent-runtime-core": "0.1.0",
+    "@marshal/agent-runtime-provider-kit": "0.1.0",
+    "@marshal/content-to-markdown": "workspace:*",
   });
-  assert.deepEqual(content.dependencies, {
-    "@marshal/attachments": "workspace:*",
+  assert.equal(provider.dependencies["@marshal/attachments"], undefined);
+  assert.equal(content.dependencies["@marshal/attachments"], undefined);
+  assert.deepEqual(attachments.dependencies, {
+    "@marshal/agent-runtime-provider-attachments": "workspace:*",
+    "@marshal/content-to-markdown": "workspace:*",
+    "@marshal/runtime": "0.1.0",
   });
-  assert.equal(attachments.dependencies["@marshal/agent-runtime-provider-attachments"], undefined);
-  assert.equal(attachments.dependencies["@marshal/content-to-markdown"], undefined);
   assert.deepEqual(Object.keys(attachments.exports), [
     ".",
     "./provider",
@@ -118,25 +122,14 @@ test("reverses internal dependencies without a package cycle", async () => {
   assert.deepEqual(Object.keys(content.exports), ["."]);
 });
 
-test("keeps both legacy source trees shim-only", async () => {
-  await assertShim(
-    "agent-runtime-provider-attachments",
-    "export * from '@marshal/attachments/provider';\n",
-  );
-  await assertShim(
-    "content-to-markdown",
-    "export * from '@marshal/attachments/content-to-markdown';\n",
-  );
-});
-
-test("owns each implementation file only under the canonical package", async () => {
+test("owns each implementation file in its implementation package", async () => {
   const providerFiles = await relativeFiles(
-    path.join(packagesRoot, "attachments", "src", "provider"),
+    path.join(packagesRoot, "agent-runtime-provider-attachments", "src"),
   );
   assert.deepEqual(providerFiles, ["attachments.ts", "index.ts"]);
 
   const contentFiles = await relativeFiles(
-    path.join(packagesRoot, "attachments", "src", "content-to-markdown"),
+    path.join(packagesRoot, "content-to-markdown", "src"),
   );
   assert.deepEqual(contentFiles, [
     "detection.ts",
@@ -151,21 +144,7 @@ test("owns each implementation file only under the canonical package", async () 
     "xml.ts",
   ]);
 
-  const canonicalSource = await readSourceTree(
-    path.join(packagesRoot, "attachments", "src"),
-  );
-  assert.doesNotMatch(
-    canonicalSource,
-    /@marshal\/(?:agent-runtime-provider-attachments|content-to-markdown)/,
-  );
 });
-
-async function assertShim(directory, expectedSource) {
-  const sourceRoot = path.join(packagesRoot, directory, "src");
-  assert.deepEqual(await relativeFiles(sourceRoot), ["index.ts"]);
-  const source = normalizeNewlines(await readFile(path.join(sourceRoot, "index.ts"), "utf8"));
-  assert.equal(source, expectedSource);
-}
 
 async function packageManifest(directory) {
   return readJson(path.join(packagesRoot, directory, "package.json"));

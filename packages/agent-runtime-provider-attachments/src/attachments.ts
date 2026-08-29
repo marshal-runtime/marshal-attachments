@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 import {
   convertContentToMarkdown,
   type MarkdownConversionServices,
-} from '../content-to-markdown/index.js';
+} from '@marshal/content-to-markdown';
 import type {
   CapabilityDescriptor,
   CapabilityProvider,

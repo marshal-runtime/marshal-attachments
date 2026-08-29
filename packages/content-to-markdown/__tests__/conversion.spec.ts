@@ -6,7 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
 	convertContentToMarkdown,
 	type MarkdownConversionServices,
-} from '../src/content-to-markdown/index.js';
+} from '../src/index.js';
 
 type ExecFileCallback = (error: Error | null, stdout: string, stderr: string) => void;
 type ExecFileMock = (
@@ -36,7 +36,7 @@ vi.mock('@marshal/agent-runtime-provider-kit', async (importOriginal) => {
 	mocks.realInitializeSafeDirectory = actual.initializeSafeDirectory;
 	return { ...actual, initializeSafeDirectory: mocks.initializeSafeDirectory };
 });
-vi.mock('../src/content-to-markdown/pdfParseDefault.js', () => ({
+vi.mock('../src/pdfParseDefault.js', () => ({
 	parsePdfWithDefaultRenderer: mocks.parsePdf,
 }));
 

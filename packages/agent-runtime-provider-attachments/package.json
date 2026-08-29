@@ -13,7 +13,9 @@
     "test": "vitest run --config vitest.config.ts"
   },
   "dependencies": {
-    "@marshal/attachments": "workspace:*"
+    "@marshal/agent-runtime-core": "0.1.0",
+    "@marshal/agent-runtime-provider-kit": "0.1.0",
+    "@marshal/content-to-markdown": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.2.3",

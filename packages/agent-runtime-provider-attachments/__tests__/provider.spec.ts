@@ -7,8 +7,8 @@ import {
   type CapabilityInvocationResult,
   type InvocationContext,
 } from '@marshal/agent-runtime-core';
-import type { MarkdownConversionResult } from '../src/content-to-markdown/index.js';
-import { createAttachmentProvider } from '../src/provider/attachments.js';
+import type { MarkdownConversionResult } from '@marshal/content-to-markdown';
+import { createAttachmentProvider } from '../src/attachments.js';
 
 const tempDirectories: string[] = [];
 const context: InvocationContext = { principal: { id: 'agent', kind: 'agent' } };

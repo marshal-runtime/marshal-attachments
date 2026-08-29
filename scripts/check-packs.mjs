@@ -214,26 +214,13 @@ function consolidatedPackFailures({ manifest, packedFiles }) {
     return failures;
   }
 
-  if (
-    manifest.name !== "@marshal/agent-runtime-provider-attachments"
-    && manifest.name !== "@marshal/content-to-markdown"
-  ) {
-    return failures;
+  if (manifest.name === "@marshal/agent-runtime-provider-attachments"
+    && Object.hasOwn(manifest.dependencies ?? {}, "@marshal/attachments")) {
+    failures.push("provider package must not depend on the aggregate package");
   }
-  if (
-    JSON.stringify(manifest.dependencies ?? {})
-    !== JSON.stringify({ "@marshal/attachments": "0.1.0" })
-  ) {
-    failures.push("compatibility manifest must depend only on @marshal/attachments@0.1.0");
-  }
-  const sourceFiles = [...packedFiles].filter((file) => file.startsWith("src/")).sort();
-  if (JSON.stringify(sourceFiles) !== JSON.stringify(["src/index.ts"])) {
-    failures.push(`compatibility source must contain only src/index.ts: ${sourceFiles.join(", ")}`);
-  }
-  const nestedDistFiles = [...packedFiles].filter((file) =>
-    file.startsWith("dist/") && file.slice("dist/".length).includes("/"));
-  if (nestedDistFiles.length > 0) {
-    failures.push(`compatibility dist contains implementation subpaths: ${nestedDistFiles.join(", ")}`);
+  if (manifest.name === "@marshal/content-to-markdown"
+    && Object.hasOwn(manifest.dependencies ?? {}, "@marshal/attachments")) {
+    failures.push("conversion package must not depend on the aggregate package");
   }
   return failures;
 }

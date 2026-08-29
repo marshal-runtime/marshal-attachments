@@ -56,30 +56,23 @@
   "consolidation": {
     "canonicalOwner": "@marshal/attachments",
     "currentPackageTrees": {
-      "packages/attachments": "21f737d08147071338ea39a1b85f760eb4451753",
-      "packages/agent-runtime-provider-attachments": "18a7d40e84823ea7d19883b1c986c2a9cc8627b5",
-      "packages/content-to-markdown": "16545bddb7785c9bddc13971f9b8d9a1c6a50d30"
+      "packages/attachments": "38e87c32205808feb008a416f2d3e9ef02937397",
+      "packages/agent-runtime-provider-attachments": "9da398f2716274053262622a70a10ae0814e9d5b",
+      "packages/content-to-markdown": "a760d4f02c9774847215455833192831eef33ae8"
     },
     "implementationModules": {
       "provider": {
         "sourcePackage": "packages/agent-runtime-provider-attachments",
-        "sourceTree": "d58602c497f9e5dc09670d3f84aa8f3687e1e9ba",
-        "target": "packages/attachments/src/provider",
-        "currentTree": "8141676202149fe0797b9ae42509a76c83fc46f3",
-        "transforms": [
-          {
-            "path": "attachments.ts",
-            "sourceBlob": "7f754a6f43fb1b7382f89e924c8375f760ac9ac9",
-            "currentBlob": "6b3eaca7ee4e65920c54558b45393b4db3336845",
-            "reason": "replace the legacy converter package import with the canonical relative module"
-          }
-        ]
+        "sourceTree": "da124ed62e08f2024c382b6fba6b47ef9315e353",
+        "target": "packages/agent-runtime-provider-attachments/src",
+        "currentTree": "da124ed62e08f2024c382b6fba6b47ef9315e353",
+        "transforms": []
       },
       "contentToMarkdown": {
         "sourcePackage": "packages/content-to-markdown",
-        "sourceTree": "fbf22013f73bff630230994af9f46f500003e886",
-        "target": "packages/attachments/src/content-to-markdown",
-        "currentTree": "fbf22013f73bff630230994af9f46f500003e886",
+        "sourceTree": "fb514e354ac5429f28557f94137e6f7df65c8bf2",
+        "target": "packages/content-to-markdown/src",
+        "currentTree": "fb514e354ac5429f28557f94137e6f7df65c8bf2",
         "transforms": []
       }
     },

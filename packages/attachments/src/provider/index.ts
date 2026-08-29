@@ -1,1 +1,1 @@
-export * from './attachments.js';
+export * from '@marshal/agent-runtime-provider-attachments';

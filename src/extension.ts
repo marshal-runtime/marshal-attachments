@@ -8,10 +8,10 @@ import { join } from 'node:path';
 import {
   createAttachmentProvider,
   type AttachmentHandleResolver,
-} from '../packages/attachments/src/provider/index.js';
+} from '../packages/agent-runtime-provider-attachments/src/index.js';
 import type {
   MarkdownConversionServices,
-} from '../packages/attachments/src/content-to-markdown/index.js';
+} from '../packages/content-to-markdown/src/index.js';
 
 export const ATTACHMENTS_RUNTIME_HOST_SERVICE_ID =
   '@marshal/attachments:host' as const;

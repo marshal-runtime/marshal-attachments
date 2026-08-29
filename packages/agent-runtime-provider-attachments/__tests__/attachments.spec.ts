@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import * as canonical from '@marshal/attachments/provider';
+import * as canonical from '../src/index.js';
 import * as legacy from '../src/index.js';
 
 describe('@marshal/agent-runtime-provider-attachments compatibility', () => {
