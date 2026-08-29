@@ -1,0 +1,35 @@
+{
+  "formatVersion": 1,
+  "workspace": {
+    "path": "validation/workspace-pnpm-lock.yaml",
+    "sha256": "0ee8e08ef992bb2ec4242fb51b657dcb97e034cab3da11fbfad7ad8bbe65c5df",
+    "graphPins": {
+      "vite": "7.3.5"
+    }
+  },
+  "freshConsumer": {
+    "path": "validation/fresh-consumer-pnpm-lock.yaml",
+    "sha256": "43fdb9729bb80c9d81090bd15c7fae54734d805d65414dbeb2b8a13e2d341ec6",
+    "graphPins": {}
+  },
+  "targetPacks": [
+    {
+      "name": "@marshal/agent-runtime-provider-attachments",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-provider-attachments-0.1.0.tgz",
+      "sha256": "70949688dd4367569e57b0b9b1f5e6f944c54dd3161c002654635f4d377905d3"
+    },
+    {
+      "name": "@marshal/attachments",
+      "version": "0.1.0",
+      "filename": "marshal-attachments-0.1.0.tgz",
+      "sha256": "90c5e9eae04d7be8ea6376138f89d86509d5828e2dd6264ef92915ee5cd8bb92"
+    },
+    {
+      "name": "@marshal/content-to-markdown",
+      "version": "1.0.0",
+      "filename": "marshal-content-to-markdown-1.0.0.tgz",
+      "sha256": "724baad41070838456c1566007201900d7270a941d4043aaa8029f2d9d10206c"
+    }
+  ]
+}

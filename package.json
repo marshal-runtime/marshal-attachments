@@ -1,0 +1,42 @@
+{
+  "name": "@marshal/attachments-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Independent workspace for Marshal attachment conversion packages",
+  "type": "commonjs",
+  "main": "dist/extension.cjs",
+  "files": [
+    "dist",
+    "runtime-extension.json",
+    "LICENSE"
+  ],
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "repository": "node scripts/check-repository.mjs",
+    "manifests": "node scripts/check-manifests.mjs",
+    "provenance": "node scripts/check-provenance.mjs",
+    "boundaries": "node scripts/check-boundaries.mjs",
+    "build": "node scripts/run-workspace-script.mjs build",
+    "typecheck": "node scripts/run-workspace-script.mjs typecheck",
+    "test": "node scripts/run-workspace-script.mjs test",
+    "api:check": "node scripts/check-api-compatibility.mjs",
+    "pack:check": "node scripts/check-packs.mjs",
+    "test:pack-install": "node scripts/pack-install-smoke.mjs",
+    "lock:update": "node scripts/update-validation-locks.mjs",
+    "verify:negative": "node --test scripts/__tests__/verification.test.mjs",
+    "verify:structure": "node --test scripts/__tests__/consolidation.test.mjs",
+    "verify:readiness": "node scripts/verify-readiness.mjs",
+    "verify:source": "node scripts/verify.mjs --source-only",
+    "verify:with-candidates": "node scripts/verify-with-candidates.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "@marshal/runtime": "0.1.0",
+    "esbuild": "0.27.7",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "license": "MIT"
+}

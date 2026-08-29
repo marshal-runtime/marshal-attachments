@@ -1,0 +1,117 @@
+{
+  "formatVersion": 1,
+  "reviewedBaseCommit": "ebdc6b48dfed4fb82dfb3800092b5793a70e2d74",
+  "packages": {
+    "@marshal/attachments": {
+      "version": "0.1.0",
+      "exports": [
+        "."
+      ],
+      "runtimeExports": [
+        "ATTACHMENTS_PACKAGE_DECLARATION",
+        "__internal",
+        "convertAttachmentToMarkdown",
+        "convertContentToMarkdown",
+        "createAttachmentProvider",
+        "createAttachmentsSource",
+        "extractImageMetadataSummary",
+        "isTextLikeAttachment",
+        "renderPdfPageItems"
+      ],
+      "typeExports": [
+        "AttachmentArtifact",
+        "AttachmentConversionKind",
+        "AttachmentConversionOptions",
+        "AttachmentConversionResult",
+        "AttachmentConversionServices",
+        "AttachmentHandleResolution",
+        "AttachmentHandleResolver",
+        "AttachmentProviderOptions",
+        "AttachmentTranscriptionRequest",
+        "AttachmentTranscriptionResult",
+        "AttachmentVisionAnalysisRequest",
+        "AttachmentVisionAnalysisResult",
+        "AttachmentsSourceOptions",
+        "ContentAnalysisHandle",
+        "ImageAnalysisRequest",
+        "ImageAnalysisResult",
+        "ImageMetadataSummary",
+        "MarkdownArtifact",
+        "MarkdownCapabilityError",
+        "MarkdownCapabilityErrorCode",
+        "MarkdownConversionKind",
+        "MarkdownConversionOptions",
+        "MarkdownConversionResult",
+        "MarkdownConversionServices",
+        "MarkdownProviderCapability",
+        "MediaAnalysisRequest",
+        "MediaAnalysisResult",
+        "MediaConversationRequest",
+        "MediaConversationTurnResult"
+      ]
+    },
+    "@marshal/agent-runtime-provider-attachments": {
+      "version": "0.1.0",
+      "exports": [
+        "."
+      ],
+      "runtimeExports": [
+        "createAttachmentProvider"
+      ],
+      "typeExports": [
+        "AttachmentHandleResolution",
+        "AttachmentHandleResolver",
+        "AttachmentProviderOptions"
+      ]
+    },
+    "@marshal/content-to-markdown": {
+      "version": "1.0.0",
+      "exports": [
+        "."
+      ],
+      "runtimeExports": [
+        "__internal",
+        "convertAttachmentToMarkdown",
+        "convertContentToMarkdown",
+        "extractImageMetadataSummary",
+        "isTextLikeAttachment",
+        "renderPdfPageItems"
+      ],
+      "typeExports": [
+        "AttachmentArtifact",
+        "AttachmentConversionKind",
+        "AttachmentConversionOptions",
+        "AttachmentConversionResult",
+        "AttachmentConversionServices",
+        "AttachmentTranscriptionRequest",
+        "AttachmentTranscriptionResult",
+        "AttachmentVisionAnalysisRequest",
+        "AttachmentVisionAnalysisResult",
+        "ContentAnalysisHandle",
+        "ImageAnalysisRequest",
+        "ImageAnalysisResult",
+        "ImageMetadataSummary",
+        "MarkdownArtifact",
+        "MarkdownCapabilityError",
+        "MarkdownCapabilityErrorCode",
+        "MarkdownConversionKind",
+        "MarkdownConversionOptions",
+        "MarkdownConversionResult",
+        "MarkdownConversionServices",
+        "MarkdownProviderCapability",
+        "MediaAnalysisRequest",
+        "MediaAnalysisResult",
+        "MediaConversationRequest",
+        "MediaConversationTurnResult"
+      ]
+    }
+  },
+  "canonicalSubpaths": {
+    "@marshal/attachments/provider": {
+      "compatibilityPackage": "@marshal/agent-runtime-provider-attachments"
+    },
+    "@marshal/attachments/content-to-markdown": {
+      "compatibilityPackage": "@marshal/content-to-markdown"
+    }
+  }
+}

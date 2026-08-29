@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "moduleResolution": "bundler",
+    "baseUrl": "..",
+    "paths": {
+      "@marshal/attachments": [
+        "packages/attachments/dist/index.d.ts"
+      ],
+      "@marshal/attachments/provider": [
+        "packages/attachments/dist/provider/index.d.ts"
+      ],
+      "@marshal/attachments/content-to-markdown": [
+        "packages/attachments/dist/content-to-markdown/index.d.ts"
+      ],
+      "@marshal/agent-runtime-provider-attachments": [
+        "packages/agent-runtime-provider-attachments/dist/index.d.ts"
+      ],
+      "@marshal/content-to-markdown": [
+        "packages/content-to-markdown/dist/index.d.ts"
+      ]
+    },
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "api-compatibility.ts"
+  ]
+}

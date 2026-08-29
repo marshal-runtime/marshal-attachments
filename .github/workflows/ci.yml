@@ -1,0 +1,76 @@
+name: marshal-attachments-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      full_closure:
+        description: Run with pre-provisioned immutable prerequisite tarballs
+        required: false
+        type: boolean
+        default: false
+      candidate_dir:
+        description: Absolute candidate tarball directory on the self-hosted runner
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: marshal-attachments-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-policy:
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - run: pnpm verify:source
+
+  readiness:
+    if: github.event_name != 'workflow_dispatch' || inputs.full_closure != true
+    needs: source-policy
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - name: Require authoritative immutable closure
+        run: pnpm verify:readiness
+
+  full-closure:
+    if: github.event_name == 'workflow_dispatch' && inputs.full_closure
+    needs: source-policy
+    timeout-minutes: 45
+    runs-on: [self-hosted, marshal-release]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+      - name: Verify with immutable candidates
+        run: pnpm verify:with-candidates
+        env:
+          MARSHAL_CANDIDATE_DIR: ${{ inputs.candidate_dir }}

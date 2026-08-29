@@ -1,0 +1,84 @@
+{
+  "formatVersion": 1,
+  "algorithm": "sha256",
+  "packages": [
+    {
+      "name": "@marshal/agent-runtime-composer",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-composer-0.1.0.tgz",
+      "sha256": "f3c301f61ef5330ad26a7b8fd9921b2d40d567f4061aef304221c1aba4ac53e6"
+    },
+    {
+      "name": "@marshal/agent-runtime-conformance",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-conformance-0.1.0.tgz",
+      "sha256": "2183474d8daa604b0d672d574158535442a64b7613943c76ee3a4d645aab5deb"
+    },
+    {
+      "name": "@marshal/agent-runtime-core",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-core-0.1.0.tgz",
+      "sha256": "3bb0a92aa04296ea32aaace930fe13b226ddc125b6cf1bf01f85f61757a67ee3"
+    },
+    {
+      "name": "@marshal/agent-runtime-delegation",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-delegation-0.1.0.tgz",
+      "sha256": "20f0173b6715701e2be8b72218de858b47e909021bf22fafdbd4ecb3b363ba7d"
+    },
+    {
+      "name": "@marshal/agent-runtime-effects",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-effects-0.1.0.tgz",
+      "sha256": "09815748b953b2f8de433036f6efb8deb2c35dc514e7ee1d3ca8f5db53e1f8fc"
+    },
+    {
+      "name": "@marshal/agent-runtime-host",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-host-0.1.0.tgz",
+      "sha256": "a29554b69ee3af2dd702e141011af5cd7abff4e2822a551b1556c2b42e7527df"
+    },
+    {
+      "name": "@marshal/agent-runtime-manifest",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-manifest-0.1.0.tgz",
+      "sha256": "fd0792e16889019444b0df5a24e389cbc36725a90550702a0900428e097a4c1f"
+    },
+    {
+      "name": "@marshal/agent-runtime-permissions",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-permissions-0.1.0.tgz",
+      "sha256": "ab25641c8ed1ee8cb75e5e5dddd3c3d62bf37363a912a1ddecf9300357d9146d"
+    },
+    {
+      "name": "@marshal/agent-runtime-provider-artifacts",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-provider-artifacts-0.1.0.tgz",
+      "sha256": "c1d6cbe391cbf3a4d574814b8c9806411679bbf1fc09a77f8ccfafd69163ede8"
+    },
+    {
+      "name": "@marshal/agent-runtime-provider-kit",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-provider-kit-0.1.0.tgz",
+      "sha256": "d26248669bfde8b140264e919e4065854ec2e9193732178d2b13cb3adad53064"
+    },
+    {
+      "name": "@marshal/agent-runtime-typescript",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-typescript-0.1.0.tgz",
+      "sha256": "571b0cd97f4631a2321ac4dc9b7ade9f4f93405939dd1ae45fadabaf7955b4c4"
+    },
+    {
+      "name": "@marshal/agent-runtime-ui",
+      "version": "0.1.0",
+      "filename": "marshal-agent-runtime-ui-0.1.0.tgz",
+      "sha256": "05e1a2256cc0a753010fc468f13999378d26d1456e78a1765f0ea7cf277ee7d4"
+    },
+    {
+      "name": "@marshal/runtime",
+      "version": "0.1.0",
+      "filename": "marshal-runtime-0.1.0.tgz",
+      "sha256": "cdce044196da7054e5f60cb227b77b04af5bc2ac54577aed4f6a3811d20505e1"
+    }
+  ]
+}

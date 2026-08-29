@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022"],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "src/extension.ts",
+    "packages/attachments/src/content-to-markdown/*.d.ts"
+  ]
+}

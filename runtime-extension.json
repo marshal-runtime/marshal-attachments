@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "identity": "@marshal/attachments-workspace",
+  "version": "0.1.0",
+  "entrypoint": "dist/extension.cjs",
+  "moduleFormat": "commonjs-bundle-v1",
+  "contracts": [
+    {
+      "id": "attachments.convert.input",
+      "shape": "object",
+      "version": "1.0.0",
+      "type": "application/schema+json",
+      "docs": "One absolute configured filePath, an optional host attachmentHandle, or inline contentBase64 with a source-label filePath."
+    },
+    {
+      "id": "attachments.convert.output",
+      "shape": "object",
+      "version": "1.0.0",
+      "type": "application/schema+json",
+      "docs": "Markdown conversion result with typed artifacts, metadata, capability errors, and analysis handles."
+    },
+    {
+      "id": "@marshal/attachments:host",
+      "shape": "object",
+      "version": "1.0.0",
+      "type": "application/vnd.marshal.runtime-service+typescript",
+      "docs": "Optional host service keyed by Symbol.for('@marshal/attachments:host') with resolveAttachmentHandle and conversionServices members."
+    }
+  ],
+  "configuration": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "allowedRoots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deniedRoots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "artifactDirectory": {
+          "type": "string"
+        },
+        "artifactDirectoryRoot": {
+          "type": "string"
+        },
+        "maxInputBytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxArchiveEntries": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxArchiveDepth": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "defaults": {
+      "maxInputBytes": 67108864,
+      "maxArchiveEntries": 50,
+      "maxArchiveDepth": 3
+    }
+  },
+  "contributes": {
+    "capabilities": [
+      "attachments.convert"
+    ]
+  }
+}

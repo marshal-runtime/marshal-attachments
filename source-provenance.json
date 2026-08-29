@@ -1,0 +1,91 @@
+{
+  "formatVersion": 2,
+  "sourceRepository": "marshal-agent-runtime",
+  "sourceCommit": "1cb5f31105790c7318fd4c6ac1bc418e87240cc8",
+  "hashFormat": "git-sha1",
+  "reviewedBaseCommit": "ebdc6b48dfed4fb82dfb3800092b5793a70e2d74",
+  "reviewedBaseTree": "dc1f3f3b61b23964452f6f7cc9ae2774779e0b08",
+  "reviewedBasePackages": {
+    "packages/attachments": {
+      "tree": "a6051fc73f938fbbec18dc5bf32a282e879a0bb2",
+      "extractedTree": "76c13ae0c7e4121ca7949f27741c1e94f1dda30d",
+      "target": "packages/attachments",
+      "transforms": [
+        {
+          "path": "package.json",
+          "sourceBlob": "1e3eddc2fd8e33890cdd112f765667e3ce03c628",
+          "extractedBlob": "afba1329435409cbf9712adfa81f1e613f4ccbfa"
+        },
+        {
+          "path": "vitest.config.ts",
+          "sourceBlob": "5f5659db6c5193068d6333a28965abbb255fdb4f",
+          "extractedBlob": "61db4baef94592b920e9be33cae12363d64b0d78"
+        }
+      ]
+    },
+    "packages/agent-runtime-provider-attachments": {
+      "tree": "580946e41e910fd45a1f295c94bcd77fb8bd7edc",
+      "extractedTree": "989a10061e11b919c5e4efc44aa70f47ac16c013",
+      "target": "packages/agent-runtime-provider-attachments",
+      "transforms": [
+        {
+          "path": "package.json",
+          "sourceBlob": "20a2918f17d1edfb1f000c2515fda2b820b3d5dd",
+          "extractedBlob": "f1e0d67394bd52c1de11d23f648fcf8d118c931d"
+        }
+      ]
+    },
+    "packages/content-to-markdown": {
+      "tree": "c8a74d1e5a80316b3c826b1fda125505e677ebaa",
+      "extractedTree": "665980afbc27de14d87c301aecb62ec551be8573",
+      "target": "packages/content-to-markdown",
+      "transforms": [
+        {
+          "path": "package.json",
+          "sourceBlob": "469bc3a77da7bc72f103be504d7cb54f67090b86",
+          "extractedBlob": "897a9d3564a1808457b6b5bca7dd9b8f44dfa2b4"
+        },
+        {
+          "path": "vitest.config.ts",
+          "sourceBlob": "7b49350006b7b3a4dcd1cc5288c1c06aee738895",
+          "extractedBlob": "bd71fd210cd3e0332f5171a4a31ce69fa76fcc6f"
+        }
+      ]
+    }
+  },
+  "consolidation": {
+    "canonicalOwner": "@marshal/attachments",
+    "currentPackageTrees": {
+      "packages/attachments": "21f737d08147071338ea39a1b85f760eb4451753",
+      "packages/agent-runtime-provider-attachments": "18a7d40e84823ea7d19883b1c986c2a9cc8627b5",
+      "packages/content-to-markdown": "16545bddb7785c9bddc13971f9b8d9a1c6a50d30"
+    },
+    "implementationModules": {
+      "provider": {
+        "sourcePackage": "packages/agent-runtime-provider-attachments",
+        "sourceTree": "d58602c497f9e5dc09670d3f84aa8f3687e1e9ba",
+        "target": "packages/attachments/src/provider",
+        "currentTree": "8141676202149fe0797b9ae42509a76c83fc46f3",
+        "transforms": [
+          {
+            "path": "attachments.ts",
+            "sourceBlob": "7f754a6f43fb1b7382f89e924c8375f760ac9ac9",
+            "currentBlob": "6b3eaca7ee4e65920c54558b45393b4db3336845",
+            "reason": "replace the legacy converter package import with the canonical relative module"
+          }
+        ]
+      },
+      "contentToMarkdown": {
+        "sourcePackage": "packages/content-to-markdown",
+        "sourceTree": "fbf22013f73bff630230994af9f46f500003e886",
+        "target": "packages/attachments/src/content-to-markdown",
+        "currentTree": "fbf22013f73bff630230994af9f46f500003e886",
+        "transforms": []
+      }
+    },
+    "legacyShims": {
+      "@marshal/agent-runtime-provider-attachments": "@marshal/attachments/provider",
+      "@marshal/content-to-markdown": "@marshal/attachments/content-to-markdown"
+    }
+  }
+}
