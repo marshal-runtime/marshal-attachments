@@ -18,6 +18,8 @@ await build({
   platform: "node",
   target: "node24",
   packages: "bundle",
+  // The runtime host provides `fs` but not `node:fs` (music-metadata requires the prefixed form).
+  alias: { "node:fs": "fs" },
   sourcemap: false,
   legalComments: "eof",
 });
