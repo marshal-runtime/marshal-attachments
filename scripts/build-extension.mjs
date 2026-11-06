@@ -19,7 +19,14 @@ await build({
   target: "node24",
   packages: "bundle",
   // The runtime host provides `fs` but not `node:fs` (music-metadata requires the prefixed form).
-  alias: { "node:fs": "fs" },
+  plugins: [
+    {
+      name: "host-fs",
+      setup(builder) {
+        builder.onResolve({ filter: /^node:fs$/ }, () => ({ path: "fs", external: true }));
+      },
+    },
+  ],
   sourcemap: false,
   legalComments: "eof",
 });
